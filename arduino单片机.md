@@ -147,3 +147,51 @@ void loop() {
 
 ```
 
+## 6.继电器
+
+![image-20231020103357172](D:\Resources\Typora\assets\image-20231020103357172.png)
+
+```c++
+int ledPin = 8;
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(ledPin,OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(ledPin,HIGH);
+  delay(1000);
+  digitalWrite(ledPin,LOW);
+  delay(1000);
+}
+
+```
+
+## 7.光敏加继电器
+
+![image-20231020110210216](D:\Resources\Typora\assets\image-20231020110210216.png)
+
+```c++
+int LedPin = 8; // LED串口8
+int Light = 14; // 光敏电阻串口A0
+int val; // 获取变量
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(LedPin,OUTPUT);//LED串口为输出模式
+  Serial.begin(9600);//设置波特率
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  val = analogRead(Light);//读取值并返回
+  Serial.println(val);//输出val
+  if(val > 500)digitalWrite(LedPin,HIGH);
+  else digitalWrite(LedPin,LOW);
+  delay(100);//延时
+}
+
+```
+
